@@ -1,12 +1,8 @@
-extends RigidBody2D
+extends Node
 
-@export var speed: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if speed == null:
-		speed = 100
-	linear_velocity = Vector2(0,speed)
 	pass # Replace with function body.
 
 
