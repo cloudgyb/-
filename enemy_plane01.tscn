@@ -1,18 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://v2diily1xi1u"]
+[gd_scene load_steps=4 format=3 uid="uid://v2diily1xi1u"]
 
 [ext_resource type="Script" path="res://enemy_plane_01.gd" id="1_1yece"]
 [ext_resource type="Texture2D" uid="uid://dj3h62wobwkps" path="res://asset/e0.png" id="1_q2avx"]
+[ext_resource type="PackedScene" uid="uid://c6qja1jqn5g61" path="res://bullet.tscn" id="2_f7t2f"]
 
 [node name="EnemyPlane01" type="RigidBody2D"]
 mass = 0.001
 gravity_scale = 0.0
 script = ExtResource("1_1yece")
+Bullet = ExtResource("2_f7t2f")
 metadata/_edit_group_ = true
 
 [node name="Plane" type="Sprite2D" parent="."]
 texture = ExtResource("1_q2avx")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2(-148, -92)
 polygon = PackedVector2Array(141, 57, 146, 57, 147, 52, 149, 52, 150, 57, 155, 57, 157, 63, 167, 59, 169, 70, 161, 76, 162, 85, 166, 84, 176, 86, 177, 82, 182, 79, 191, 79, 195, 81, 198, 91, 208, 95, 211, 107, 206, 113, 196, 113, 191, 116, 192, 118, 197, 118, 197, 120, 196, 121, 190, 121, 187, 123, 183, 121, 176, 121, 175, 118, 180, 117, 176, 114, 166, 114, 162, 116, 165, 119, 161, 122, 161, 124, 157, 125, 148, 131, 138, 125, 133, 120, 129, 114, 120, 114, 115, 117, 121, 118, 121, 120, 118, 121, 113, 122, 110, 123, 107, 122, 99, 122, 99, 118, 104, 118, 101, 114, 90, 114, 85, 107, 88, 95, 98, 90, 100, 82, 106, 79, 113, 79, 119, 81, 121, 86, 133, 84, 135, 77, 128, 71, 126, 69, 128, 60, 131, 60, 140, 63)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

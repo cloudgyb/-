@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://jpiq05xchejl"]
+[gd_scene load_steps=3 format=3 uid="uid://d8q53en6x1d2"]
 
 [ext_resource type="Script" path="res://enemy_plane_03.gd" id="1_8b10c"]
 [ext_resource type="Texture2D" uid="uid://dmtys4c5jr37h" path="res://asset/e2.png" id="2_qf2xa"]
@@ -15,3 +15,7 @@ texture = ExtResource("2_qf2xa")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-34, -32, -26, -46, 0, -42, 24, -46, 34, -35, 36, -24, 23, -17, 33, -11, 39, -18, 56, -14, 63, -4, 59, 24, 53, 33, 40, 36, 30, 27, 18, 28, 13, 36, 1, 41, -6, 40, -13, 36, -17, 28, -30, 25, -38, 34, -51, 33, -62, 23, -62, -10, -52, -14, -44, -17, -31, -9, -23, -17, -36, -22)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,12 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6qja1jqn5g61"]
+[gd_scene load_steps=4 format=3 uid="uid://c6qja1jqn5g61"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_fijln"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pqle8"]
+size = Vector2(20, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a0c6"]
 radius = 31.0
 height = 120.0
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 4
+gravity_scale = 0.0
+script = ExtResource("1_fijln")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_pqle8")
 
 [node name="RigidBody2D" type="CollisionShape2D" parent="."]
 position = Vector2(67, 89)
