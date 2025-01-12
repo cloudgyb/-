@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cx0samg1ce13n"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0

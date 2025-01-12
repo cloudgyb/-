@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://db62jq28v7fkj"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_cq71d"]
+[ext_resource type="Texture2D" uid="uid://de8584oor6syn" path="res://asset/plane.png" id="1_yvhra"]
+[ext_resource type="PackedScene" uid="uid://dqa8oob0kn88t" path="res://bullet/bullet99.tscn" id="2_ymsg0"]
+
+[node name="Player" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_cq71d")
+Bullet = ExtResource("2_ymsg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yvhra")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-22, -46, -12, -46, -11, -39, -10, -35, -7, -38, -1, -41, 6, -37, 10, -35, 9, -45, 22, -46, 23, -28, 26, -26, 27, 0, 51, 11, 56, 18, 55, 31, 51, 34, 35, 34, 35, 41, 29, 41, 18, 43, 10, 42, 2, 45, -8, 45, -14, 41, -29, 43, -40, 37, -39, 34, -55, 33, -56, 17, -27, 0, -27, -13, -25, -16, -26, -28, -23, -32, -20, -33, -24, -36)
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]

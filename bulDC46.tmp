@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6qja1jqn5g61"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_fijln"]
+[ext_resource type="Texture2D" uid="uid://dxb2e4birxo4k" path="res://asset/bullet.png" id="2_tsh32"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrs81"]
+atlas = ExtResource("2_tsh32")
+region = Rect2(44, 5, 17, 52)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a0c6"]
+radius = 8.0
+height = 40.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_fijln")
+speed = null
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = SubResource("AtlasTexture_yrs81")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -7)
+shape = SubResource("CapsuleShape2D_1a0c6")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+scale = Vector2(0.75, 2.1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
