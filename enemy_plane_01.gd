@@ -34,6 +34,4 @@ func _on_area_entered(area: Area2D) -> void:
 		bomb.position = position
 		get_parent().add_child(bomb)
 		bomb.play()
-		#get_parent().$BombAudioPlayer.play()
-		#$BombAudioPlayer.play()
 		hide()

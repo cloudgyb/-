@@ -7,14 +7,11 @@ extends Area2D
 
 const DEFAULT_SPEED: float = 100
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if speed == 0:
 		speed = DEFAULT_SPEED
 	$BulletTimer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position.y += speed * delta
 
@@ -40,6 +37,6 @@ func _on_area_entered(area: Area2D) -> void:
 		bomb.position = position
 		get_parent().add_child(bomb)
 		bomb.play()
-		$BombAudioPlayer.play()
+		
 		hide()
 	

@@ -7,7 +7,6 @@ extends Area2D
 
 const DEFAULT_SPEED: float = 80
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if speed == 0:
 		speed = DEFAULT_SPEED
@@ -27,7 +26,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	$BulletTimer.stop()
 	queue_free()
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("has_damage"):
 		print("02生命值-" + str(area.damage))
@@ -37,5 +35,5 @@ func _on_area_entered(area: Area2D) -> void:
 		bomb.position = position
 		get_parent().add_child(bomb)
 		bomb.play()
-		$BombAudioPlayer.play()
+	
 		hide()
