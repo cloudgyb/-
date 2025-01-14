@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://db62jq28v7fkj"]
+[gd_scene load_steps=6 format=3 uid="uid://db62jq28v7fkj"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_cq71d"]
 [ext_resource type="Texture2D" uid="uid://de8584oor6syn" path="res://asset/plane.png" id="1_yvhra"]
 [ext_resource type="PackedScene" uid="uid://dqa8oob0kn88t" path="res://bullet/bullet99.tscn" id="2_ymsg0"]
+[ext_resource type="PackedScene" uid="uid://vm2024whbdv4" path="res://bomb.tscn" id="3_77ixr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jelw"]
+bg_color = Color(0.387471, 0.680443, 0.408336, 1)
 
 [node name="Player" type="Area2D"]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_cq71d")
 Bullet = ExtResource("2_ymsg0")
+Bomb = ExtResource("3_77ixr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_yvhra")
@@ -18,6 +23,24 @@ polygon = PackedVector2Array(-22, -46, -12, -46, -11, -39, -10, -35, -7, -38, -1
 
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = 50.0
+offset_right = 53.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 4
+theme_override_styles/fill = SubResource("StyleBoxFlat_3jelw")
+value = 100.0
+rounded = true
+show_percentage = false
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
