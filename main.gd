@@ -25,7 +25,7 @@ func _on_enemy_plane_timer_timeout() -> void:
 	var index = randi_range(0, eps.size()-1)
 	var plane_scene = eps[index]
 	var p = plane_scene.instantiate()
-	p.position = Vector2(0,0)
+	p.position = Vector2(0, 0)
 	p.position.x += randi_range(100, get_viewport().size.x-100)
 	#p.speed = randi_range(100,500)
 	add_child(p)
