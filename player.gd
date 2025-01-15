@@ -38,8 +38,8 @@ func _on_area_entered(area: Area2D) -> void:
 		if health <= 0:
 			$BulletTimer.stop()
 			hide()
-			monitoring = false
-			monitorable = false
+			set_deferred("monitoring", false)
+			set_deferred("monitorable", false)
 			collision_layer = 0
 			var bomb = Bomb.instantiate()
 			bomb.position = position
