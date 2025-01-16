@@ -10,6 +10,8 @@ var screen_size
 var ui_player_health_progress: ProgressBar
 var ui_player_health_label: Label
 
+signal play_die
+
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$BulletTimer.start()
@@ -57,6 +59,7 @@ func _on_area_entered(area: Area2D) -> void:
 			bomb.position = position
 			get_parent().add_child(bomb)
 			bomb.play()
+			play_die.emit()
 		print("玩家被击中生命-" + str(area.damage))
 
 

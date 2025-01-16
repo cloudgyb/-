@@ -13,12 +13,16 @@ config_version=5
 config/name="飞机大战"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.0450698, 0.142682, 0.252251, 1)
+boot_splash/image="res://asset/launch.png"
+config/icon="res://icon.png"
 
 [display]
 
 window/size/viewport_width=600
 window/size/viewport_height=1000
+window/size/mode=2
+window/size/resizable=false
 
 [editor]
 
