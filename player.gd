@@ -7,12 +7,19 @@ const DEFAULT_SPEED: int = 500
 @export var Bomb: PackedScene
 @export var health: int = 5000
 var screen_size
+var ui_player_health_progress: ProgressBar
+var ui_player_health_label: Label
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$BulletTimer.start()
 	$ProgressBar.max_value = health
 	$ProgressBar.value = health
+	ui_player_health_progress = get_parent().get_node("UI/ProgressBar")
+	ui_player_health_progress.max_value = health
+	ui_player_health_progress.value = health
+	ui_player_health_label = get_parent().get_node("UI/HealthLabel")
+	ui_player_health_label.text = str(health)
 	
 func _process(delta: float):
 	var v = Vector2.ZERO
@@ -35,6 +42,11 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("has_damage"):
 		health -= area.damage
 		$ProgressBar.value = health
+		ui_player_health_progress.value = health
+		var h = health
+		if health < 0:
+			h = 0
+		ui_player_health_label.text = str(h)
 		if health <= 0:
 			$BulletTimer.stop()
 			hide()
